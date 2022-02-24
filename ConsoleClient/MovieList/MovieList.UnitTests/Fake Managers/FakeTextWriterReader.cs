@@ -3,13 +3,13 @@ using MovieList.Managers;
 
 namespace MovieList.UnitTests.Fake_Managers
 {
-    public class FakeConsoleTextWriterReader : ITextWriterReader
+    public class FakeTextWriterReader : ITextWriterReader
     {
         public List<string> TextInput { get; set; }
         public List<string> TextOutput { get; set; }
         public int InputId { get; set; }
 
-        public FakeConsoleTextWriterReader ()
+        public FakeTextWriterReader ()
         {
             TextInput = new List<string>();
             TextOutput=new List<string>();

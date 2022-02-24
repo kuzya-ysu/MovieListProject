@@ -6,9 +6,9 @@ namespace MovieList
     {
         private static void Main ()
         {
-            var fileMovieListLoaderSaver = new FileMovieListLoaderSaver("MovieList.txt");
             var consoleTextWriterReader = new ConsoleTextWriterReader();
-            var app = new Application(fileMovieListLoaderSaver, consoleTextWriterReader);
+            var httpManager = new HttpManager();
+            var app = new Application(consoleTextWriterReader, httpManager);
             app.ExecuteApp();
         }
     }

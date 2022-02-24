@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MovieList.UnitTests", "MovieList.UnitTests\MovieList.UnitTests.csproj", "{3BD45ED8-AFC4-4352-99B7-67D842533C8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MovieList.UnitTests", "MovieList.UnitTests\MovieList.UnitTests.csproj", "{89D9E7D9-6569-40DA-8ECA-E20664635401}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,10 +22,10 @@ Global
 		{BFD1AC99-93C6-4578-8EAC-8F91342D9669}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFD1AC99-93C6-4578-8EAC-8F91342D9669}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFD1AC99-93C6-4578-8EAC-8F91342D9669}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3BD45ED8-AFC4-4352-99B7-67D842533C8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BD45ED8-AFC4-4352-99B7-67D842533C8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BD45ED8-AFC4-4352-99B7-67D842533C8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BD45ED8-AFC4-4352-99B7-67D842533C8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D9E7D9-6569-40DA-8ECA-E20664635401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D9E7D9-6569-40DA-8ECA-E20664635401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D9E7D9-6569-40DA-8ECA-E20664635401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D9E7D9-6569-40DA-8ECA-E20664635401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

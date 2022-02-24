@@ -1,35 +1,32 @@
-﻿using MovieList.Exceptions;
+﻿using System.Collections.Generic;
+using System.Text;
+using MovieList.Exceptions;
 using MovieList.Managers;
 
 namespace MovieList
 {
     public class Application
     {
-        private readonly IMovieListLoaderSaver _movieListLoaderSaver;
         private readonly ITextWriterReader _textWriterReader;
+        private readonly IMovieListCommandManager _movieListCommandManager;
 
-        public Application ( IMovieListLoaderSaver movieListLoaderSaver, ITextWriterReader textWriterReader )
+        public Application ( ITextWriterReader textWriterReader, IMovieListCommandManager movieListCommandManager)
         {
-            _movieListLoaderSaver = movieListLoaderSaver;
-            _textWriterReader = textWriterReader; //do fake classes
+            _textWriterReader = textWriterReader;
+            _movieListCommandManager = movieListCommandManager;
         }
 
         public void ExecuteApp ()
         {
-            var movieList = _movieListLoaderSaver.LoadMovieList();
             var isQuitMenuOptionSelected = false;
 
             while (!isQuitMenuOptionSelected)
             {
                 try
                 {
-                    HandleExecuteApp(movieList, out isQuitMenuOptionSelected);
+                    HandleExecuteApp(out isQuitMenuOptionSelected);
                 }
                 catch (UserInputException ex)
-                {
-                    ShowResultMessage(ex.Message);
-                }
-                catch (NotFoundException ex)
                 {
                     ShowResultMessage(ex.Message);
                 }
@@ -40,7 +37,7 @@ namespace MovieList
             }
         }
 
-        private void HandleExecuteApp ( MovieList movieList, out bool isQuitMenuOptionSelected )
+        private void HandleExecuteApp (out bool isQuitMenuOptionSelected )
         {
             PrintMenu();
             var menuOptionSelection = GetMenuOptionSelection();
@@ -50,32 +47,31 @@ namespace MovieList
             {
                 case 1:
                     {
-                        AddTitle(movieList);
+                        AddTitle();
                         break;
                     }
                 case 2:
                     {
-                        UpdateName(movieList);
+                        UpdateName();
                         break;
                     }
                 case 3:
                     {
-                        UpdateRating(movieList);
+                        UpdateRating();
                         break;
                     }
                 case 4:
                     {
-                        DeleteTitle(movieList);
+                        DeleteTitle();
                         break;
                     }
                 case 5:
                     {
-                        PrintMovieList(movieList);
+                        PrintMovieList();
                         break;
                     }
                 case 6:
                     {
-                        _movieListLoaderSaver.SaveMovieList(movieList);
                         isQuitMenuOptionSelected=true;
                         break;
                     }
@@ -104,40 +100,44 @@ namespace MovieList
             return menuOptionSelection;
         }
 
-        private void AddTitle ( MovieList movieList )
+        private void AddTitle ()
         {
             var name = GetTitleName();
             var rating = GetTitleRating();
-            movieList.CreateTitle(name, rating);
+            var title = new Title{ Name = name, Rating = rating };
+            _movieListCommandManager.CreateTitle(title);
             ShowResultMessage("Title added");
         }
 
-        private void UpdateName ( MovieList movieList )
+        private void UpdateName ()
         {
             var titleNumber = GetTitleNumber();
             var newName = GetTitleName(true);
-            movieList.UpdateName(titleNumber, newName);
+            var title = new Title { Name = newName };
+            _movieListCommandManager.UpdateTitle(titleNumber,title);
             ShowResultMessage("Name updated");
         }
 
-        private void UpdateRating ( MovieList movieList )
+        private void UpdateRating ()
         {
             var titleNumber = GetTitleNumber();
             var newRating = GetTitleRating(true);
-            movieList.UpdateRating(titleNumber, newRating);
+            var title = new Title { Rating = newRating };
+            _movieListCommandManager.UpdateTitle(titleNumber, title);
             ShowResultMessage("Rating updated");
         }
 
-        private void DeleteTitle ( MovieList movieList )
+        private void DeleteTitle ()
         {
             var titleNumber = GetTitleNumber();
-            movieList.DeleteTitle(titleNumber);
+            _movieListCommandManager.DeleteTitle(titleNumber);
             ShowResultMessage("Title deleted");
         }
 
-        private void PrintMovieList ( MovieList movieList )
+        private void PrintMovieList ()
         {
-            ShowResultMessage(movieList.Titles.Count == 0 ? "List is empty" : movieList.ToString());
+            var titles = _movieListCommandManager.GetMovieList();
+            ShowResultMessage(titles.Count == 0 ? "List is empty" : PrintTitles(titles));
         }
 
         private int GetTitleNumber ()
@@ -162,6 +162,16 @@ namespace MovieList
             if (!int.TryParse(inputRating, out var rating))
                 throw new UserInputException("Rating has to be a whole number from 1 to 10");
             return rating;
+        }
+
+        private string PrintTitles (List<Title> titles)
+        {
+            var list = new StringBuilder();
+            foreach (var title in titles)
+            {
+                list.AppendLine($"{title.Id}. {title.Name} - {title.Rating}");
+            }
+            return list.ToString();
         }
 
         private void ShowResultMessage ( string message )

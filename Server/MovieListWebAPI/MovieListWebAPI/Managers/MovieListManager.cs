@@ -38,11 +38,11 @@ namespace MovieListWebAPI.Managers
             SaveMovieList();
         }
 
-        public void UpdateTitle(int titleId, Title title)
+        public void UpdateTitle(int titleId, PatchTitle title)
         {
-            if (title.Rating != 0)
+            if (title.Rating.HasValue)
             {
-                _movieList.UpdateRating(titleId, title.Rating);
+                _movieList.UpdateRating(titleId, title.Rating.Value);
             }
             
             if (title.Name != null)

@@ -7,7 +7,7 @@ namespace MovieListWebAPI.Models
     public class MovieList
     {
         public List<Title> Titles { get; }
-        public int NextId { get; private set; }
+        public int NextId { get; set; }
 
         public MovieList ()
         {

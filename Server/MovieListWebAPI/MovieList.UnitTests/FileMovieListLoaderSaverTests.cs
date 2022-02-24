@@ -28,6 +28,7 @@ namespace MovieListWebAPI.UnitTests
             var loadedMovieList = _fileMovieListLoaderSaver.LoadMovieList();
 
             Assert.Equal(_movieList.ToString(), loadedMovieList.ToString());
+            Assert.Equal(_movieList.NextId,loadedMovieList.NextId);
         }
 
         [Fact]

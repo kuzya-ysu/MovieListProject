@@ -1,4 +1,4 @@
-﻿namespace MovieList
+﻿namespace WindowsFormClient.Models
 {
 
     public class Title

@@ -1,0 +1,202 @@
+﻿<UserControl x:Class="WindowsFormClient.ListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WindowsFormClient"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="375">
+    <Grid MaxHeight="50">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="315"/>
+            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="25"/>
+        </Grid.ColumnDefinitions>
+
+        <Border BorderThickness="0" >
+        <StackPanel Orientation="Horizontal"
+                    Background="Transparent">
+            <TextBox x:Name="NameTextBox"
+                     Width="Auto"
+                     Background="Transparent"
+                     FontFamily="{StaticResource Font}"
+                     FontWeight="Light"
+                     FontSize="25"
+                     VerticalAlignment="Center"
+                     Foreground="White"
+                     HorizontalAlignment="Left"
+                     BorderThickness="0"
+                     Margin="10,0,10,0">
+            </TextBox>
+            
+            <Image x:Name="StarImage" 
+                   Source="{StaticResource StarSource}" 
+                   Width="18"
+                   HorizontalAlignment="Left"
+                   Visibility="Collapsed">
+            </Image>
+
+            <TextBox x:Name="RatingTextBox"
+                     Background="Transparent"
+                     Foreground="White"
+                     MaxWidth="45"
+                     MinWidth="20"
+                     Width="Auto"
+                     BorderThickness="0"
+                     VerticalAlignment="Center"
+                     Margin="5,0,10,0"
+                     FontFamily="{StaticResource Font}"
+                     FontWeight="Light"
+                     FontSize="25">
+
+            </TextBox>
+        </StackPanel>
+        </Border>
+
+
+
+        <Button x:Name="EditButton" 
+                Grid.Column="1" 
+                BorderThickness="0" 
+                Click="EditButton_Click"
+                Visibility="Collapsed">
+            <Image Source="{StaticResource EditSource}" Width="25">
+            </Image>
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#4c4278"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="AcceptButton"
+                Grid.Column="1" 
+                BorderThickness="0" 
+                Click="AcceptButton_Click"
+                Visibility="Collapsed">
+            <Image Source="{StaticResource OkSource}" Width="25">
+            </Image>
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#4c4278"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Label x:Name="EmptyBox"
+               Grid.Column="1"
+               Visibility="Visible">
+        </Label>
+
+        <Button x:Name="DeleteButton" 
+                Grid.Column="2" 
+                BorderThickness="0" 
+                Click="DeleteButton_Click"
+                Visibility="Collapsed">
+            <Image Source="{StaticResource DeleteSource}" Width="25">
+            </Image>
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#4c4278"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="CancelButton" 
+                Grid.Column="2" 
+                BorderThickness="0" 
+                Click="CancelButton_Click"
+                Visibility="Collapsed">
+            <Image Source="{StaticResource CancelSource}" Width="25">
+            </Image>
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#4c4278"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+
+        <Button x:Name="AddButton" 
+                Grid.Column="2" 
+                BorderThickness="0"
+                Click="AddButton_Click">
+            <Image Source="{StaticResource AddSource}" Width="25">
+            </Image>
+            <Button.Style>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#4c4278"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</UserControl>

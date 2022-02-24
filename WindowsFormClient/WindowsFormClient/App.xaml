@@ -1,0 +1,17 @@
+﻿<Application x:Class="WindowsFormClient.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WindowsFormClient"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <FontFamily x:Key="Font">
+            pack://application:,,,/Fonts/#Montserrat
+        </FontFamily>
+        <ImageSource x:Key="EditSource">pack://application:,,,/Images/outline_edit_white_24dp.png</ImageSource>
+        <ImageSource x:Key="AddSource">pack://application:,,,/Images/outline_add_white_24dp.png</ImageSource>
+        <ImageSource x:Key="CancelSource">pack://application:,,,/Images/outline_clear_white_24dp.png</ImageSource>
+        <ImageSource x:Key="DeleteSource">pack://application:,,,/Images/outline_delete_white_24dp.png</ImageSource>
+        <ImageSource x:Key="OkSource">pack://application:,,,/Images/outline_done_white_24dp.png</ImageSource>
+        <ImageSource x:Key="StarSource">pack://application:,,,/Images/outline_star_white_24dp.png</ImageSource>
+    </Application.Resources>
+</Application>

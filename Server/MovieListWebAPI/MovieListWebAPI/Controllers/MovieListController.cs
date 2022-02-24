@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using MovieListWebAPI.Exceptions;
 using MovieListWebAPI.Managers;
 using MovieListWebAPI.Models;
 
@@ -45,7 +43,7 @@ namespace MovieListWebAPI.Controllers
         }
 
         [HttpPatch("{titleId}")]
-        public IActionResult UpdateTitle(int titleId,[FromBody] Title title)
+        public IActionResult UpdateTitle(int titleId,[FromBody] PatchTitle title)
         {
             _movieListManager.UpdateTitle(titleId, title);
             return NoContent();
